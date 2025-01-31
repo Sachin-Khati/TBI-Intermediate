@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Configure</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+   
+</head>
+<body>
+    <div class="flex justify-center items-center bg-sky-200 h-screen text-center">
+<div class="h-150 bg-white w-xs pt-2 mt-15 px-4 rounded-lg block" id="main"  >
+        <div class="ml-1 mr-1">
+          <h1 class="font-bold text-xl my-8">H&M Jacket </h1>
+ 
+          <div class="h-70 bg-cover mt-1 mb-1" id="image" style="background-image: url('desizn1.jpeg');"></div>
+          <div class="right-0 text-left">
+          <label for="color" class="font-medium text-m text-gray-400 mr-0"> Color:</label>
+        <select id="color" class="bg-gray-400 rounded-lg h-8 w-20 text-center font-normal mt-2 hover:bg-gray-200" >
+            <option value="black">Black</option>
+            <option value="gray">Gray</option>
+            <option value="orange">Orange</option>
+            <option value="green">Green</option>
+        </select>
+    </div>
+    <div class="right-0 text-left">
+       <label for="design" class="font-medium text-m text-gray-400 mr-0">Desizn:</label>
+<select id="desizn" class="bg-gray-400 rounded-lg h-8 w-20 text-center font-normal my-4 hover:bg-gray-200" >
+    <option value="regular">Regular fit</option>
+    <option value="jip">Zip-Through</option>
+    <option value="jacket">Jacket</option>
+</select>
+  </div>
+       <div>
+        <button id="btn" class="h-10 w-full bg-sky-600 rounded-lg hover:bg-sky-200">Add To Cart </button>
+       </div>
+        </div>
+      </div>
+      <!-- add to section  -->
+      <div class="hidden" id="cart"> 
+
+        <div class="h-60 bg-white w-xs pt-2 mt-15 px-4 rounded-lg"  >
+          <div class="ml-1 mr-1">
+            <h1 class="font-bold text-xl my-8 text-black">Congratulation</h1>
+            <div class=" text-gray-400 font-medium " id="summary">
+             
+            </div>
+            <div class="font-bold text-sky-500 mt-7">
+              <p>Thanku for visiting </p>
+            </div>
+ </div>
+ </div>  
+      </div>
+
+    </div>
+    
+
+ <script src="product.js"></script>   
+</body>
+</html>
