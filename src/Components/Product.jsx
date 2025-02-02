@@ -31,7 +31,7 @@ function Product() {
   };
 
   return (
-    <div className="flex bg-white h-screen text-center w-full ">   
+    <div className="flex bg-white h-full text-center w-full ">   
     {/* image */}
    <div className="flex items-start justify-start flex-col py-7  ">
    <div
