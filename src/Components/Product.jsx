@@ -7,7 +7,8 @@ import orange from "../assets/orange.png"
 function Product() {
   const [color, setColor] = useState("black");
   const [size ,setSize]=useState("s")
-  const [addedToCart, setAddedToCart] = useState(false);
+  const [cart, setCart] = useState([]);//
+  const [cartVisible, setCartVisible] = useState(false);//
   const [desc,setdesc]=useState("H&M Group is a global fashion and design company, with over 4,000 stores in more than 75 markets and online sales in 60 markets. All our brands and business ventures share the same passion for making great and more sustainable fashion and design available to everyone.")
   const images = {black, gray,green,orange };
   
@@ -19,8 +20,8 @@ function Product() {
     green: "H&M's green zip hoodie brings a fresh, vibrant touch to your casual wardrobe. Made from soft, cozy fabric, it features a full zipper and an adjustable hood for a personalized fit. Perfect for layering, this hoodie adds comfort and style to any outfit.",
   };
   const handleAddToCart = () => {
-    setAddedToCart(true);
-    setTimeout(() => setAddedToCart(false), 3000); // Hide after 3 sec
+    const newItem = { color, size, price: 50 };
+    setCart([...cart, newItem]);
   };
   const handleSizeChange = (e) => {
     const selectedSize = e.target.value;
@@ -108,22 +109,42 @@ function Product() {
            
           </select>
         </div>
-
-        <button
-          className="h-10 w-full font-semibold text-white rounded-lg bg-orange-400 hover:bg-orange-500"
-          onClick={handleAddToCart}
-        >
+        <div className="flex justify-end">
+          <button className="h-10 w-auto font-semibold text-white  rounded-b-full bg-yellow-600 hover:bg-orange-500 px-4" onClick={() => setCartVisible(true)}>
+            🛒 Your Cart ({cart.length})
+          </button>
+        </div>
+        
+        <button className="h-10 w-full font-semibold text-white rounded-lg bg-orange-400 hover:bg-orange-500 mt-2" onClick={handleAddToCart}>
           🛒 Add To Cart
         </button>
-
-        {addedToCart && (
-          <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg">
-            ✅ Item added to cart!
-          </div>
-        )}
       </div>
+
+      {/* Cart Modal */}
+      {cartVisible && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h2 className="font-bold text-xl mb-4">Your Cart</h2>
+            {cart.length === 0 ? (
+              <p className="text-gray-500">Your cart is empty.</p>
+            ) : (
+              <ul>
+                {cart.map((item, index) => (
+                  <li key={index} className="flex justify-between mb-2 border-b pb-2">
+                    <span>{item.color.toUpperCase()} - {item.size.toUpperCase()}</span>
+                    <span>$50</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <button className="mt-4 w-full bg-red-500 text-white py-2 rounded-lg" onClick={() => setCartVisible(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
 export default Product;
-   
